@@ -7,11 +7,15 @@ export default function Header() {
       </div>
 
       <div className="mx-auto max-w-6xl px-6 pt-14 pb-10 relative">
-        <span className="absolute top-10 right-10 butterfly text-4xl">🦋</span>
-        <span className="absolute top-20 right-32 flower-spin text-2xl opacity-70">
+        <span className="hidden md:block absolute top-10 right-10 butterfly text-4xl">
+          🦋
+        </span>
+        <span className="hidden md:block absolute top-20 right-32 flower-spin text-2xl opacity-70">
           🌸
         </span>
-        <span className="absolute top-6 right-56 text-2xl floating">🐱</span>
+        <span className="hidden md:block absolute top-6 right-56 text-2xl floating">
+          🐱
+        </span>
 
         <div className="flex items-center gap-3">
           <span className="heart-pulse text-3xl">💗</span>
@@ -20,7 +24,7 @@ export default function Header() {
           </span>
         </div>
 
-        <h1 className="mt-6 font-display text-5xl md:text-7xl leading-tight">
+        <h1 className="mt-6 font-display text-4xl md:text-7xl leading-tight">
           Za moju{" "}
           <span className="italic text-rose-500">
             Teu <span className="butterfly inline-block">🦋</span>
