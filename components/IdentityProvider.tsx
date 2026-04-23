@@ -12,13 +12,25 @@ import { Author } from "@/lib/api";
 type Identity = {
   author: Author;
   name: string;
+  /** genitive — "od Mikija / od Teodore" */
+  nameGen: string;
   emoji: string;
 };
 
 const IdentityCtx = createContext<Identity | null>(null);
 
-const MIKI: Identity = { author: "me", name: "Miki", emoji: "👨" };
-const TEA: Identity = { author: "her", name: "Tea", emoji: "👩" };
+const MIKI: Identity = {
+  author: "me",
+  name: "Miki",
+  nameGen: "Mikija",
+  emoji: "👨",
+};
+const TEA: Identity = {
+  author: "her",
+  name: "Tea",
+  nameGen: "Teodore",
+  emoji: "👩",
+};
 
 function fromSlug(slug: string | null): Identity | null {
   if (!slug) return null;

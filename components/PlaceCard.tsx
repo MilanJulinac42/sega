@@ -164,7 +164,7 @@ export default function PlaceCard({ place }: { place: Place }) {
           <input
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
-            placeholder={`Komentar od ${me?.name ?? ""}…`}
+            placeholder={`Komentar od ${me?.nameGen ?? ""}…`}
             className="flex-1 min-w-0 rounded-xl border border-rose-200 bg-white/70 px-3 py-2 text-sm focus:outline-none focus:border-rose-400"
           />
           <button
