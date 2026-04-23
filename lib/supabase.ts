@@ -2,7 +2,7 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 let client: SupabaseClient | null = null;
 
-function getClient(): SupabaseClient {
+export function getSupabase(): SupabaseClient {
   if (client) return client;
 
   const url = process.env.SUPABASE_URL;
@@ -19,12 +19,3 @@ function getClient(): SupabaseClient {
   });
   return client;
 }
-
-// Proxy — lazy init, izbegava build-time poziv kad env još nije učitan.
-export const supabase = new Proxy({} as SupabaseClient, {
-  get(_target, prop) {
-    const c = getClient();
-    // @ts-expect-error — dynamic access na klijent
-    return c[prop];
-  },
-});

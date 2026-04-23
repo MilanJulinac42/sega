@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { getSupabase } from "./supabase";
 import { Place, Category } from "./data";
 
 type Author = "me" | "her";
@@ -46,9 +46,9 @@ type CommentRow = {
 
 export async function listPlaces(): Promise<Place[]> {
   const [placesRes, votesRes, commentsRes] = await Promise.all([
-    supabase.from("places").select("*").order("id"),
-    supabase.from("votes").select("*"),
-    supabase.from("comments").select("*").order("created_at"),
+    getSupabase().from("places").select("*").order("id"),
+    getSupabase().from("votes").select("*"),
+    getSupabase().from("comments").select("*").order("created_at"),
   ]);
 
   if (placesRes.error) throw placesRes.error;
@@ -99,7 +99,7 @@ export async function createPlace(input: {
   lng?: number | null;
 }): Promise<Place> {
   const id = `p-${Date.now()}`;
-  const { error } = await supabase.from("places").insert({
+  const { error } = await getSupabase().from("places").insert({
     id,
     name: input.name,
     category: input.category,
@@ -133,7 +133,7 @@ export async function setVote(
   user: Author,
   value: VoteValue
 ) {
-  const { error } = await supabase
+  const { error } = await getSupabase()
     .from("votes")
     .upsert(
       { place_id: placeId, author: user, value, updated_at: new Date().toISOString() },
@@ -141,7 +141,7 @@ export async function setVote(
     );
   if (error) throw error;
 
-  const { data, error: readErr } = await supabase
+  const { data, error: readErr } = await getSupabase()
     .from("votes")
     .select("*")
     .eq("place_id", placeId);
@@ -161,7 +161,7 @@ export async function addComment(
   author: Author,
   text: string
 ): Promise<Comment> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("comments")
     .insert({ place_id: placeId, author, text: text.trim() })
     .select()
@@ -178,7 +178,7 @@ export async function addComment(
 }
 
 export async function listProposals(): Promise<DateProposal[]> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("date_proposals")
     .select("*")
     .order("created_at", { ascending: false });
@@ -201,7 +201,7 @@ export async function createProposal(input: {
   note: string;
   author: Author;
 }): Promise<DateProposal> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("date_proposals")
     .insert({
       author: input.author,
