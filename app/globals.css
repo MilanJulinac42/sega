@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rose: #f43f6b;
+}
+
+html,
+body {
+  @apply bg-romantic-gradient text-rose-900;
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.heart-pulse {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.floating {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.floaty {
+  animation: drift 9s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0) rotate(-6deg); }
+  25%  { transform: translate(12px, -14px) rotate(4deg); }
+  50%  { transform: translate(-8px, -22px) rotate(-8deg); }
+  75%  { transform: translate(10px, -10px) rotate(6deg); }
+  100% { transform: translate(0, 0) rotate(-6deg); }
+}
+
+.butterfly {
+  display: inline-block;
+  animation: flutter 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes flutter {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  25%      { transform: translateY(-8px) rotate(8deg); }
+  50%      { transform: translateY(-4px) rotate(-3deg); }
+  75%      { transform: translateY(-10px) rotate(10deg); }
+}
+
+.paw-trail span {
+  opacity: 0;
+  animation: paws 4s linear infinite;
+}
+.paw-trail span:nth-child(2) { animation-delay: 0.6s; }
+.paw-trail span:nth-child(3) { animation-delay: 1.2s; }
+.paw-trail span:nth-child(4) { animation-delay: 1.8s; }
+
+@keyframes paws {
+  0%   { opacity: 0; transform: translateX(0); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translateX(30px); }
+}
+
+.flower-spin {
+  display: inline-block;
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cats-breathe {
+  animation: cats-breathe 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes cats-breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.015) translateY(-3px); }
+}
+
+.miki-breathe {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: cat-breathe 4.5s ease-in-out infinite;
+}
+.tea-breathe {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: cat-breathe 3.8s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+@keyframes cat-breathe {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50%      { transform: translateY(-2px) scaleY(1.02); }
+}
+
+.heart-between {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heart-pulse 2.2s ease-in-out infinite;
+}
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%      { transform: scale(1.25); opacity: 1; }
+}
+
+.bow-wiggle-small {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bow-wiggle 2.5s ease-in-out infinite;
+}
+
+.bow-wiggle {
+  animation: bow-wiggle 2.5s ease-in-out infinite;
+}
+@keyframes bow-wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50%      { transform: rotate(6deg); }
+}
+
+.cat-heart {
+  animation: heart-float 3s ease-in-out infinite;
+}
+@keyframes heart-float {
+  0%   { transform: translateY(0) scale(0.8); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(-40px) scale(1.1); opacity: 0; }
+}
